@@ -2,8 +2,6 @@ const express = require('express');
 const db = require('./db');
 const apiRouter = express.Router();
 
-// app.use('/api', apiRouter);
-
 apiRouter.get('/', (req, res, next) => {
     res.send(db.getAllFromDatabase('minions'));
 })
