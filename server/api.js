@@ -29,7 +29,11 @@ apiRouter.get('/minions/:minionId', (req, res, next) => {
 })
 
 apiRouter.put('/minions/:minionId', (req, res, next) => {
-    res.send(updateInstanceInDatabase('minions', req.params.minionId));
+    if(updateInstanceInDatabase('minions', req.params.minionId)) {
+        res.send(updateInstanceInDatabase('minions', req.params.minionId));
+    } else {
+        res.status(404).send();
+    }
 });
 
 module.exports = apiRouter;
