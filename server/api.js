@@ -21,7 +21,15 @@ apiRouter.post('/minions', (req, res, next) => {
 })
 
 apiRouter.get('/minions/:minionId', (req, res, next) => {
-    res.send(getFromDatabaseById('minions', req.params.minionId));
+    if(getFromDatabaseById('minions', req.params.minionId)) {
+        res.send(getFromDatabaseById('minions', req.params.minionId));
+    } else {
+        res.status(404).send();
+    }
 })
+
+apiRouter.put('/minions/:minionId', (req, res, next) => {
+    res.send(updateInstanceInDatabase('minions', req.params.minionId));
+});
 
 module.exports = apiRouter;
