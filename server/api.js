@@ -20,7 +20,7 @@ apiRouter.post('/minions', (req, res, next) => {
     res.send(addToDatabase('minions'));
 })
 
-apiRouter.get('/minions:minionId', (req, res, next) => {
+apiRouter.get('/minions/:minionId', (req, res, next) => {
     res.send(getFromDatabaseById('minions', req.params.minionId));
 })
 
